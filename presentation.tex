@@ -1,0 +1,55 @@
+
+\documentclass[xcolor=dvipsnames]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\usetheme{Phen}
+
+
+\title[Short]{Your PhenoMeNal title}
+
+\author[me@email.com]{Your name}
+
+\institute[Phen]{%
+PhenoMeNal group\\
+\vspace{0.5em}%
+PhenoMeNal partner\\
+\vspace{1.5em}%
+\includegraphics[width=2cm]{img/PhenoMeNal_logo}%
+}
+
+\date{\today}
+
+
+\begin{document}
+
+\AtBeginSection[]
+{%
+   \begin{frame}
+     \frametitle{Section}
+     %\vspace*{\fill} % try to push the title as far as possible towards the center
+     \begin{block}{}
+       \begin{center}
+         \Large\insertsection
+       \end{center}
+     \end{block}
+     %\vspace*{\fill}
+     %\vfill
+     %\begin{flushright}
+     %  \includegraphics[width=3cm]{img/PhenoMeNal_logo.pdf}%
+     %\end{flushright}
+   \end{frame}
+}
+
+\maketitle
+
+
+\begin{frame}{Your slide}
+		Insert some text
+\end{frame}
+
+\end{document}
+
+% vim: set et ts=4 sw=4 fileencoding=utf-8 encoding=utf-8

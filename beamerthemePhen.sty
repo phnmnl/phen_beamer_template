@@ -1,0 +1,116 @@
+%
+% Beamer version of the PhenoMeNal presentation template
+%
+%
+% Authors:
+%   * Luca Pireddu <luca.pireddu@crs4.it>
+
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+
+\DeclareOptionBeamer{secheader}{\beamer@secheadertrue}
+\ProcessOptionsBeamer
+
+\useinnertheme[shadow]{rounded}
+\useoutertheme{infolines}
+
+%% Suppress the Section headline from the infolines theme
+\ifbeamer@secheader\else\setbeamertemplate{headline}[default]\fi
+
+\defbeamertemplate*{frametitle}{crs4 theme}[1][left]
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{frametitle}
+		\begin{columns}%
+			\column{8.5cm}%
+			\usebeamerfont{frametitle}%
+			\vbox{}\vskip-1ex%
+			\if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+			\strut\insertframetitle\strut\par%
+			{%
+				\ifx\insertframesubtitle\@empty%
+				\else%
+				{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+				\fi
+			}%
+			\column{2.5cm}%
+			\vspace{-1.5cm}
+			% Remove the logo from header bar
+			%\begin{flushright}%
+			%	\includegraphics[width=3cm]{img/logo.pdf}%
+			%\end{flushright}%
+		\end{columns}%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+	\vskip-0.6cm% else we get a white space between the title and the separator
+	% line. I got -0.6cm by trial and error, so I don't doubt it may break...
+	\begin{beamercolorbox}[wd=\paperwidth,ht=3pt]{frametitle separation}\end{beamercolorbox}%
+}
+
+%\defbeamertemplate*{footline}{crs4 theme}
+%{
+%  \leavevmode%
+%  \hbox{%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+%    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%  \end{beamercolorbox}%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+%    \usebeamerfont{title in head/foot}\insertshorttitle
+%  \end{beamercolorbox}%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+%    \usebeamerfont{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+%  \end{beamercolorbox}}%
+%  \vskip0pt%
+%}
+
+
+%%%%%%% Colours %%%%%%%
+
+\definecolor{phen blue}{rgb}{0.635,0.78,0.898}
+\definecolor{phen light}{rgb}{0.505,0.082,0.321}
+\definecolor{phen dark}{rgb}{0.32,0.349,0.568}
+
+% outer
+\setbeamercolor*{palette primary}{fg=white,bg=phen dark}
+\setbeamercolor*{palette secondary}{fg=white,bg=phen light}
+\setbeamercolor*{palette tertiary}{fg=white,bg=phen light}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+
+\setbeamercolor*{sidebar}{bg=phen light}
+  
+\setbeamercolor*{palette sidebar primary}{fg=phen light!10}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{fg=phen light!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+% inner
+
+\setbeamercolor{block title}{fg=white,bg=phen dark!75!black}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+\setbeamercolor{author in head/foot}{fg=phen dark,bg=phen blue} 
+\setbeamercolor{date in head/foot}{fg=phen dark,bg=phen blue}
+\setbeamercolor{title in head/foot}{fg=white,bg=phen dark}
+\setbeamercolor{frametitle separation}{bg=phen light}
+
+\renewcommand\figurename{Fig}
+
+\mode
+<all>
+
